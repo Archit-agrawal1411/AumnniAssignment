@@ -5,8 +5,13 @@ import java.security.Principal;
         @NamedQuery(
                 name = "org.aumni.core.User.findByEmail",
                 query = "SELECT u FROM User u WHERE u.email = :email"
+        ),
+        @NamedQuery(
+                name = "org.aumni.core.User.getAllUsers",
+                query = "SELECT u FROM User u"
         )
 })
+
 @Entity
 @Table(name = "users")
 public class User implements Principal {

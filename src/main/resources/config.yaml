@@ -16,3 +16,13 @@ database:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
     hibernate.hbm2ddl.auto: update
+
+logging:
+  level: INFO
+  loggers:
+    org.aumni: DEBUG
+  appenders:
+    - type: console
+      threshold: INFO
+      layout:
+        type: json

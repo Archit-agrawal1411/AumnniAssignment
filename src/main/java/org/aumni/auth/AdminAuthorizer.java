@@ -1,7 +1,6 @@
 
 package org.aumni.auth;
 
-import org.aumni.core.User;
 import io.dropwizard.auth.Authorizer;
 import org.aumni.core.User;
 

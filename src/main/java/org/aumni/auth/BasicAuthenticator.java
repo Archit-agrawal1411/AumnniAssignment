@@ -1,11 +1,11 @@
 package org.aumni.auth;
 
-import org.aumni.core.User;
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
-import org.aumni.dao.UserDao;
 import io.dropwizard.hibernate.UnitOfWork;
+import org.aumni.core.User;
+import org.aumni.dao.UserDao;
 
 import java.util.Optional;
 

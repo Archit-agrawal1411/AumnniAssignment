@@ -1,11 +1,12 @@
 package org.aumni.resources;
 
+import com.google.inject.Inject;
 import com.mysql.cj.exceptions.UnableToConnectException;
-import org.aumni.core.Employee;
-import org.aumni.core.User;
-import org.aumni.dao.EmployeeDao;
 import io.dropwizard.auth.Auth;
 import io.dropwizard.hibernate.UnitOfWork;
+import org.aumni.core.Employee;
+import org.aumni.core.User;
+import org.aumni.services.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +23,18 @@ import javax.ws.rs.core.Response;
 public class EmployeeResource {
 
     private static final Logger logger= LoggerFactory.getLogger(EmployeeResource.class);
-    private final EmployeeDao employeeDao;
+//    private final EmployeeDao employeeDao;
 
-    public EmployeeResource(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
+    private final EmployeeService employeeService;
+
+    @Inject
+    public EmployeeResource(EmployeeService employeeService){
+        this.employeeService=employeeService;
     }
+
+//    public EmployeeResource(EmployeeDao employeeDao) {
+//        this.employeeDao = employeeDao;
+//    }
 
     @POST
     @UnitOfWork
@@ -34,7 +42,7 @@ public class EmployeeResource {
     public Response createEmployee(@Auth User user, @Valid Employee employee) {
         try{
             logger.info("Inside Employee Resource createEmployee class /employees endpoint hit");
-            Employee createdEmployee = employeeDao.create(employee);
+            Employee createdEmployee = employeeService.create(employee);
             return Response.status(Response.Status.CREATED).entity(createdEmployee).build();
         } catch (UnableToConnectException e) {
             logger.error("Unable to connect to the database during employee registration");

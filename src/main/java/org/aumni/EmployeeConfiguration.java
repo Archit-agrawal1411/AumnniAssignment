@@ -13,6 +13,10 @@ public class EmployeeConfiguration extends Configuration {
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();
 
+    @Valid
+    @NotNull
+    private LiquibaseConfiguration liquibase;
+
     @JsonProperty("database")
     public DataSourceFactory getDataSourceFactory() {
         return database;
@@ -21,5 +25,15 @@ public class EmployeeConfiguration extends Configuration {
     @JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory dataSourceFactory) {
         this.database = dataSourceFactory;
+    }
+
+    @JsonProperty("liquibase")
+    public LiquibaseConfiguration getLiquibaseConfiguration() {
+        return liquibase;
+    }
+
+    @JsonProperty("liquibase")
+    public void setLiquibaseConfiguration(LiquibaseConfiguration liquibaseConfiguration) {
+        this.liquibase = liquibaseConfiguration;
     }
 }

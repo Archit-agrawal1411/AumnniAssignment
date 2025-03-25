@@ -11,7 +11,7 @@ database:
   driverClass: com.mysql.cj.jdbc.Driver
   user: test
   password: test
-  url: jdbc:mysql://localhost:3307/aumniassignment?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+  url: jdbc:mysql://localhost:3306/aumniassignment?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
@@ -26,3 +26,11 @@ logging:
       threshold: INFO
       layout:
         type: json
+
+liquibase:
+  changeLogFile: db/changelog/db.changelog-master.xml
+  url: jdbc:mysql://localhost:3306/aumniassignment?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+  driver: com.mysql.cj.jdbc.Driver
+  username: test
+  password: test
+  loggingLevel: INFO
